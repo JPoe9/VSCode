@@ -1,19 +1,15 @@
-
-
-
 async function getRandomJoke() {
   let jokeResponse, jokeContent; 
   try { 
-    jokeResponse = await fetch('https://v2.jokeapi.dev/joke/Any?type=single&safe-mode&lang=en');
+    jokeResponse = await fetch('https://v2.jokeapi.dev/joke/Any?safe-mode&lang=en');
     jokeContent = await jokeResponse.json();
   }
   catch(error) { console.log(error); }
 
-  return jokeContent.joke;
+  return jokeContent;
 }
 
-// console.log(getRandomJoke());
-
+getRandomJoke();
 
 async function getRandomExcuse(){
   let  excuseResponse,excuseJson;
@@ -25,16 +21,52 @@ async function getRandomExcuse(){
 
   return excuseJson[0].excuse;
 }
-// console.log(getRandomExcuse());
 
- function displayRandoms(){
-  const randomJokeObj = document.querySelector("#random-joke");
+async function getRandomTrivia() {
+  let trivia;
+  try {
+    const triviaResponse = await fetch("https://opentdb.com/api.php?amount=1");
+    trivia = await triviaResponse.json();
+  } catch(error) { console.error(error) };
+
+  return trivia;
+}
+
+function formatJoke(jokeContent) {
+  const randomJokeCard = document.getElementById("joke-card");
+  const randomJokePt1 = document.querySelector("#random-joke");
+  
+  if(jokeContent.type === "single") {
+    randomJokePt1.innerText = jokeContent.joke;
+  } else {
+    const randomJokePt2 = document.createElement("p");
+    const showDeliveryBtn = document.createElement("input");
+    randomJokePt1.innerText = jokeContent.setup;
+    randomJokePt2.classList.add("card-text", "hidden");
+    randomJokePt2.innerText = jokeContent.delivery;
+    showDeliveryBtn.id = "show-delivery";
+    showDeliveryBtn.type = "button";
+    showDeliveryBtn.value = "Show Punchline";
+    showDeliveryBtn.classList.add("btn", "btn-primary");
+    showDeliveryBtn.addEventListener("click", () => {
+      randomJokePt2.classList.remove("hidden");
+      showDeliveryBtn.remove();
+    })
+
+    randomJokeCard.append(randomJokePt2, showDeliveryBtn);
+  }
+}
+
+function displayDailyRandoms(){
   const randomExcuseObj = document.querySelector("#random-excuse");
-  Promise.all([getRandomJoke(),getRandomExcuse()])
+  const randomTriviaObj = document.getElementById("random-trivia");
+
+  Promise.all([getRandomJoke(),getRandomExcuse(),getRandomTrivia()])
   .then((results)=>{
-    randomJokeObj.innerText =  results[0];
+    formatJoke(results[0]);
     randomExcuseObj.innerText =  results[1];
+    randomTriviaObj.innerText = results[2];
   })
 }
 
-displayRandoms();
+displayDailyRandoms();

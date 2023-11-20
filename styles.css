@@ -1,22 +1,27 @@
-/* .card {
-    width: 18rem;
-} */
+#linkToSite:hover {
+  /* text-decoration: underline; */
+  /* background-color: rgba(255, 255, 0, 0.897); */
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 5px rgb(245, 245, 147);
+}
+
 
 #button {
- padding: 1rem;
+  padding: 1rem;
 }
 
 #navcard {
-    align-content: center;
-    justify-content: center;
-    text-align: center;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
 }
 
 /* #container {
+>>>>>>> styles.css
   border: 1px solid grey;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -24,21 +29,33 @@
   border-bottom-left-radius: 1rem;
   font-size: 1.4rem;
   padding: 0 1rem;
+<<<<<<< styles.css
+=======
 } */
 
 .card-body {
   display: flex;
   flex-direction: column;
   gap: .75rem;
+
 }
 
 body {
-    background-color: rgb(248, 248, 194);
+  background-color: rgb(248, 248, 194);
 }
+
 .hidden {
   display: none;
 }
 
+#bodyActivity {
+  background-color: rgb(247, 247, 201)
+}
+
+.tracker {
+  text-align: center;
+
+}
 .random input[type="radio"] {
   margin-right: .25rem;
 }

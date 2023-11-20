@@ -70,3 +70,11 @@ function displayDailyRandoms(){
 }
 
 displayDailyRandoms();
+
+let submit_button = document.getElementById("submitbutton");
+submit_button.addEventListener('click', function(event){
+const newPTag = document.createElement('p');
+newPTag.innerText = "Thank you for the suggestion";
+newPTag.classList.add("tracker");
+document.body.append(newPTag);
+})

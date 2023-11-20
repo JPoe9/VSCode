@@ -40,3 +40,7 @@ body {
 #bodyActivity {
   background-color: rgb(247, 247, 201)
 }
+
+.tracker {
+  text-align: center;
+}

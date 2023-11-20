@@ -12,7 +12,8 @@
     <title>Ideator</title>
 </head>
 
-<body>
+<div>
+   <div class="container" >
     <div class="jumbotron text-center">
 
         <h1>Team Ideas</h1>
@@ -27,7 +28,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Joke of the day</h5>
                         <p class="card-text">What do you call an angry carrot?....A steamed veggie.</p>
-                        <a href="#" class="btn btn-warning">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,6 @@
                         <h5 class="card-title">Excuse of the day</h5>
                         <p class="card-text">I can't make it today because my pet rock is feeling a bit existential, and
                             I need to have a deep conversation with it. We've got some serious bonding to do!</p>
-                        <a href="#" class="btn btn-warning">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +48,6 @@
                         <h5 class="card-title">Trivia of the day</h5>
                         <p class="card-text">What is the number 3.14 known as.</p>
                         <p class="card-text">Pi</p>
-                        <a href="#" class="btn btn-warning">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -57,53 +55,21 @@
     </div>
     <!-- this is our container with buttons -->
 
-    <div class="container" id="container">
+    <div class="container" >
         <div class="card-body" id="navcard">
-                    <a href="#" class="btn btn-primary" id="button">Jokes</a>
-                    <a href="#" class="btn btn-primary" id="button">Excuses</a>
-                    <a href="#" class="btn btn-primary" id="button">Trivia</a>
-                    <a href="#" class="btn btn-primary" id="button">Activities</a>
+                    <a href="#" class="btn btn-success" id="button">Feeling funny? Here are some more jokes</a>
+                    <a href="#" class="btn btn-danger" id="button">Excuses</a>
+                    <a href="#" class="btn btn-secondary" id="button">Trivia</a>
+                    <a href="#" class="btn btn-warning" id="button">Activities</a>
+                    <!-- <a href="#" class="btn btn-primary" id="button">Conversation Starters</a> -->
         </div>
       </div>
     </div>
-    <!-- This is our nav bar (only need one) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Suggestions for site" aria-label="Search">
+        <input class="form-control me-2" type="text" placeholder="Suggestions for site" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Submit</button>
       </form>
+    </div>
 </body>
 
 </html>

@@ -16,18 +16,29 @@
     gap: 1rem;
 }
 
-#container {
-    border: 1px solid grey;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    font-size: 1.4rem;
-    padding: 0 1rem;
+/* #container {
+  border: 1px solid grey;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  font-size: 1.4rem;
+  padding: 0 1rem;
+} */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
 }
+
 body {
     background-color: rgb(248, 248, 194);
 }
 .hidden {
-    display: none;
+  display: none;
+}
+
+.random input[type="radio"] {
+  margin-right: .25rem;
 }

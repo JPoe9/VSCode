@@ -9,8 +9,6 @@ async function getRandomJoke() {
   return jokeContent;
 }
 
-//getRandomJoke();
-
 async function getRandomExcuse(){
   let  excuseResponse,excuseJson;
   try{
@@ -32,13 +30,19 @@ async function getRandomTrivia() {
   return trivia;
 }
 
+function decode(encoded) {
+  const textArea = document.createElement("textarea");
+  textArea.innerHTML = encoded;
+  return textArea.value;
+}
+
 function formatJoke(jokeContent) {
   const randomJokeCard = document.getElementById("joke-card");
   const randomJokePt1 = document.querySelector("#random-joke");
-  
+  console.log(jokeContent);
   if(jokeContent.type === "single") {
     randomJokePt1.innerText = jokeContent.joke;
-  } else {
+  } else if(jokeContent.type === "twopart") {
     const randomJokePt2 = document.createElement("p");
     const showDeliveryBtn = document.createElement("input");
     randomJokePt1.innerText = jokeContent.setup;
@@ -60,18 +64,24 @@ function formatJoke(jokeContent) {
 function formatTrivia(triviaContent){
   const randomTriviaObj = document.getElementById("random-trivia");
   const randomTriviaCard = document.getElementById("trivia-card")
-  randomTriviaObj.innerText = triviaContent.results[0].question;
+  randomTriviaObj.innerText = decode(triviaContent.results[0].question);
   let answerArray = [];
   if(triviaContent.results[0].type == "boolean"){
     const answerOption1 = document.createElement("input");
     const answerOption2 = document.createElement("input");
+    const trueLabel = document.createElement("label");
+    const falseLabel = document.createElement("label");
+    trueLabel.innerText = "True";
     answerOption1.type = "radio";
     answerOption1.name = "answerOption";
-    answerOption1.Value = "True";
+    answerOption1.value = "True";
+    falseLabel.innerText = "False"; 
     answerOption2.type = "radio";
     answerOption2.name = "answerOption";
-    answerOption2.Value = "False";
-    randomTriviaCard.append(answerOption1,answerOption2);
+    answerOption2.value = "False";
+    trueLabel.prepend(answerOption1);
+    falseLabel.prepend(answerOption2);
+    randomTriviaCard.append(trueLabel,falseLabel);
   }else{
     for(let option of triviaContent.results[0].incorrect_answers){
       answerArray.push(option);
@@ -84,7 +94,7 @@ function formatTrivia(triviaContent){
       answerOption.name = "answerOption";
       let randomElementIndex = Math.floor(Math.random() * answerArray.length);
       answerOption.value = answerArray[randomElementIndex];
-      answerLabel.innerText = decodeURI(answerArray[randomElementIndex]);
+      answerLabel.innerText = decode(answerArray[randomElementIndex]);
       answerLabel.prepend(answerOption);
       answerArray.splice(randomElementIndex,1);
       randomTriviaCard.appendChild(answerLabel);
@@ -92,21 +102,23 @@ function formatTrivia(triviaContent){
   }
   const checkAnswerBtn = document.createElement("input");
   checkAnswerBtn.type = "button";
-  checkAnswerBtn.value = "Check your answer";
+  checkAnswerBtn.value = "Check Answer";
+  checkAnswerBtn.classList.add("btn", "btn-primary");
   checkAnswerBtn.addEventListener("click",()=>{
-   let userAnswer = document.querySelector("input[name=answerOption]:checked").value;
-   let answerTag = document.getElementById("answer-tag");
-   answerTag.classList.remove("hidden");
-   if(userAnswer === triviaContent.results[0].correct_answer){
-    alert ("You got the right answer!");
-    answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the right answer! `
-    randomTriviaCard.append(answerTag);
-  }else{
-    alert ("You got the wrong answer!");
-    answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the wrong answer! `
-    randomTriviaCard.append(answerTag);    
-   }
+    const userAnswer = document.querySelector("input[name=answerOption]:checked").value;
+    const answerTag = document.getElementById("answer-tag");
+    console.log(triviaContent);
+    if(userAnswer === triviaContent.results[0].correct_answer){
+      answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the right answer! `
+      randomTriviaCard.append(answerTag);
+    }else{
+      answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the wrong answer! `
+      randomTriviaCard.append(answerTag);    
+    }
+    answerTag.classList.remove("hidden");
+    checkAnswerBtn.remove();
   })
+  randomTriviaCard.append(checkAnswerBtn);
 }
 
 function displayDailyRandoms(){

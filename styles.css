@@ -1,3 +1,25 @@
 .card {
     width: 18rem;
 }
+
+#button {
+ margin-left: 10rem;
+ margin-right: 10rem;
+}
+
+#navcard {
+    align-content: center;
+}
+
+#container {
+    border: 1px solid grey;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    font-size: 1.4rem;
+    padding: 0 1rem;
+}
+body {
+    background-color: rgb(248, 248, 194);
+}

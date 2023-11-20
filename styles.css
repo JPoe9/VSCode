@@ -20,7 +20,8 @@
   gap: 1rem;
 }
 
-#container {
+/* #container {
+>>>>>>> styles.css
   border: 1px solid grey;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -28,6 +29,15 @@
   border-bottom-left-radius: 1rem;
   font-size: 1.4rem;
   padding: 0 1rem;
+<<<<<<< styles.css
+=======
+} */
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+
 }
 
 body {
@@ -37,10 +47,15 @@ body {
 .hidden {
   display: none;
 }
+
 #bodyActivity {
   background-color: rgb(247, 247, 201)
 }
 
 .tracker {
   text-align: center;
+
+}
+.random input[type="radio"] {
+  margin-right: .25rem;
 }

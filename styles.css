@@ -1,7 +1,33 @@
-.card {
+/* .card {
     width: 18rem;
+} */
+
+#button {
+ padding: 1rem;
 }
 
+#navcard {
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+}
+
+#container {
+    border: 1px solid grey;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    font-size: 1.4rem;
+    padding: 0 1rem;
+}
+body {
+    background-color: rgb(248, 248, 194);
+}
 .hidden {
     display: none;
 }

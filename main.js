@@ -9,7 +9,7 @@ async function getRandomJoke() {
   return jokeContent;
 }
 
-getRandomJoke();
+//getRandomJoke();
 
 async function getRandomExcuse(){
   let  excuseResponse,excuseJson;
@@ -57,16 +57,68 @@ function formatJoke(jokeContent) {
   }
 }
 
+function formatTrivia(triviaContent){
+  const randomTriviaObj = document.getElementById("random-trivia");
+  const randomTriviaCard = document.getElementById("trivia-card")
+  randomTriviaObj.innerText = triviaContent.results[0].question;
+  let answerArray = [];
+  if(triviaContent.results[0].type == "boolean"){
+    const answerOption1 = document.createElement("input");
+    const answerOption2 = document.createElement("input");
+    answerOption1.type = "radio";
+    answerOption1.name = "answerOption";
+    answerOption1.Value = "True";
+    answerOption2.type = "radio";
+    answerOption2.name = "answerOption";
+    answerOption2.Value = "False";
+    randomTriviaCard.append(answerOption1,answerOption2);
+  }else{
+    for(let option of triviaContent.results[0].incorrect_answers){
+      answerArray.push(option);
+    }
+    answerArray.push(triviaContent.results[0].correct_answer);
+    while(answerArray.length){
+      let answerOption = document.createElement("input");
+      let answerLabel = document.createElement("label");
+      answerOption.type = "radio";
+      answerOption.name = "answerOption";
+      let randomElementIndex = Math.floor(Math.random() * answerArray.length);
+      answerOption.value = answerArray[randomElementIndex];
+      answerLabel.innerText = decodeURI(answerArray[randomElementIndex]);
+      answerLabel.prepend(answerOption);
+      answerArray.splice(randomElementIndex,1);
+      randomTriviaCard.appendChild(answerLabel);
+    }
+  }
+  const checkAnswerBtn = document.createElement("input");
+  checkAnswerBtn.type = "button";
+  checkAnswerBtn.value = "Check your answer";
+  checkAnswerBtn.addEventListener("click",()=>{
+   let userAnswer = document.querySelector("input[name=answerOption]:checked").value;
+   let answerTag = document.getElementById("answer-tag");
+   answerTag.classList.remove("hidden");
+   if(userAnswer === triviaContent.results[0].correct_answer){
+    alert ("You got the right answer!");
+    answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the right answer! `
+    randomTriviaCard.append(answerTag);
+  }else{
+    alert ("You got the wrong answer!");
+    answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the wrong answer! `
+    randomTriviaCard.append(answerTag);    
+   }
+  })
+}
+
 function displayDailyRandoms(){
   const randomExcuseObj = document.querySelector("#random-excuse");
-  const randomTriviaObj = document.getElementById("random-trivia");
 
   Promise.all([getRandomJoke(),getRandomExcuse(),getRandomTrivia()])
   .then((results)=>{
     formatJoke(results[0]);
     randomExcuseObj.innerText =  results[1];
-    randomTriviaObj.innerText = results[2];
+    formatTrivia(results[2]);
   })
 }
+
 
 displayDailyRandoms();

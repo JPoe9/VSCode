@@ -1,10 +1,10 @@
 // available options on page:
-    // category
-    // difficulty
+// category
+// difficulty
 
 // fetch 5 trivia questions from selected category/difficulty
 // display questions and answer choices
-    // for each question, display the question and choices
+// for each question, display the question and choices
 // compare user answer with correct answer
 // display results
 
@@ -17,23 +17,27 @@ function decode(encoded) {
 async function getTriviaCategories() {
   let categories;
   try {
-    const categoryResponse = await fetch(`https://opentdb.com/api_category.php`)
+    const categoryResponse = await fetch(
+      `https://opentdb.com/api_category.php`
+    );
     categories = await categoryResponse.json();
     console.log(categories);
-  } catch(error) { console.error(error) }
-  
-  return categories;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return categories.trivia_categories;
 }
 
 async function populateCategoryOptions() {
   const categoryPicklist = document.getElementById("category");
   const categoryOptions = await getTriviaCategories();
-  categoryOptions.forEach(option => {
+  categoryOptions.forEach((option) => {
     const newOption = document.createElement("option");
     newOption.value = option.id;
     newOption.innerText = option.name;
     categoryPicklist.append(newOption);
-  })
+  });
 }
 // getTriviaCategories();
 
@@ -41,46 +45,67 @@ async function populateCategoryOptions() {
 // category
 // difficulty
 
-async function getTriviaQuestions(category=9, difficulty="easy") {  
+async function getTriviaQuestions(category = 9, difficulty = "easy") {
   let triviaQuestions;
   try {
-    const triviaResponse = await fetch(`https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}`)
+    const triviaResponse = await fetch(
+      `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty.toLowerCase()}`
+    );
     triviaQuestions = await triviaResponse.json();
-  } catch(error) { console.error(error) };
-  
+  } catch (error) {
+    console.error(error);
+  }
+
   return triviaQuestions;
 }
 
 function getChoices(questionDetails) {
   const answers = [];
   const possibleAnswers = [];
-  const questionName = Math.round(Math.random * 10000);
+  const questionName = Math.round(Math.random() * 10000);
   possibleAnswers.push(questionDetails.correct_answer);
-  questionDetails.incorrect_answers.forEach(incorrectAnswer => possibleAnswers.push(incorrectAnswer));
-  while(possibleAnswers.length) {
+  questionDetails.incorrect_answers.forEach((incorrectAnswer) =>
+    possibleAnswers.push(incorrectAnswer)
+  );
+  while (possibleAnswers.length) {
     const answerLabel = document.createElement("label");
     const radioBtn = document.createElement("input");
-    const answerIndex = Math.floor(Math.random * possibleAnswers.length)
+    const answerIndex = Math.floor(Math.random() * possibleAnswers.length);
     answerLabel.innerText = decode(possibleAnswers[answerIndex]);
-    radioBtn.type = 'radio';
+    radioBtn.type = "radio";
     radioBtn.name = questionName;
     radioBtn.value = possibleAnswers[answerIndex];
     answerLabel.prepend(radioBtn);
-    possibleAnswers.splice(answerIndex,1);
+    possibleAnswers.splice(answerIndex, 1);
     answers.push(answerLabel);
   }
   return answers;
 }
 
-async function displayTrivia(triviaQuestions) {
-  const questionElements = await triviaQuestions.map(questionDetails => {
+async function displayTrivia() {
+  const triviaSection = document.getElementById("trivia-questions");
+  const category = document.getElementById("category").value;
+  const difficulty = document.getElementById("difficulty").value;
+  const triviaObject = await getTriviaQuestions(category, difficulty);
+  const triviaQuestions = triviaObject.results;
+  const questionElements = triviaQuestions.map((questionDetails) => {
     const questionDiv = document.createElement("div");
     const question = document.createElement("p");
     const choices = getChoices(questionDetails);
     question.innerText = decode(questionDetails.question);
+    console.log(question);
     questionDiv.append(question);
-    choices.forEach(choice => questionDiv.append(choice));
-  })
+    choices.forEach((choice) => questionDiv.append(choice));
+    return questionDiv;
+  });
+  const checkAnswersButton = document.createElement("input");
+  checkAnswersButton.type = "button";
+  checkAnswersButton.id = "check-answers";
+  checkAnswersButton.classList.add("btn", "btn-primary");
+  checkAnswersButton.value = "Check Answers";
+  questionElements.forEach((question) => triviaSection.append(question));
+  triviaSection.append(checkAnswersButton);
 }
-
+populateCategoryOptions();
+document.getElementById("triviaSelection").addEventListener('click', displayTrivia);
 // getTriviaQuestions(28, "medium");

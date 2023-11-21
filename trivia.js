@@ -52,6 +52,7 @@ async function getTriviaQuestions(category=9, difficulty="easy") {
 }
 
 function getChoices(questionDetails) {
+  const answers = [];
   const possibleAnswers = [];
   const questionName = Math.round(Math.random * 10000);
   possibleAnswers.push(questionDetails.correct_answer);
@@ -63,11 +64,12 @@ function getChoices(questionDetails) {
     answerLabel.innerText = decode(possibleAnswers[answerIndex]);
     radioBtn.type = 'radio';
     radioBtn.name = questionName;
-    // continue assigning properties of radio then append the button to the answer label
     radioBtn.value = possibleAnswers[answerIndex];
     answerLabel.prepend(radioBtn);
     possibleAnswers.splice(answerIndex,1);
+    answers.push(answerLabel);
   }
+  return answers;
 }
 
 async function displayTrivia(triviaQuestions) {

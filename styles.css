@@ -50,7 +50,9 @@ body {
 
 #addExcuses {
   background-color: white;
+ 
 }
+
 
 .page-title {
   background-color: bisque;
@@ -79,4 +81,12 @@ body {
 
 .trivia-question>p {
   margin: 0;
+}
+
+
+
+#colorbackground  {
+  background-color:  rgb(241, 202, 155);
+  padding: 20px; 
+  /* border-radius: 10px;  */
 }

@@ -50,7 +50,7 @@ body {
 
 #addExcuses {
   background-color: white;
- 
+  border-radius: 10px; 
 }
 
 
@@ -83,10 +83,8 @@ body {
   margin: 0;
 }
 
-
-
 #colorbackground  {
   background-color:  rgb(241, 202, 155);
   padding: 20px; 
-  /* border-radius: 10px;  */
+  border-radius: 10px; 
 }

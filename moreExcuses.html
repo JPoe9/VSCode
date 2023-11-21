@@ -8,7 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <script defer src="moreExcuses.js"></script>
-    <title>Excuses</title>
+    <title>loads of excuses here</title>
 </head>
 
 <body id="bodyActivity">
@@ -17,46 +17,53 @@
             <div class="jumbotron text-center">
 
                 <h1>Excuses</h1>
-                <p>Had a last-minute call I couldn't avoid! Currently tied up, can we reschedule? Lost track of time.</p>
+                <p id="random-excuse"></p>
             </div>
-            <div class="list-group">
-                <a href="" target="_blank" class="list-group-item list-group-item-action"
-                    id="linkToSite">1 </a>
-                <a href="" target="_blank" class="list-group-item list-group-item-action"
-                    id="linkToSite">2</a>
-                <a href="" target="_blank" class="list-group-item list-group-item-action"
-                    id="linkToSite">3</a>
-                <a href="" target="_blank"
-                    class="list-group-item list-group-item-action" id="linkToSite">4</a>
-                <a href="" target="_blank"
-                    class="list-group-item list-group-item-action" id="linkToSite">5</a>
-            </div>
-            <div class="container">
-                <div class="card-body" id="navcard">
-                    <a href="ideatorHome.html" class="btn btn-outline-primary" id="button">Home</a>
-                    <a href="#" class="btn btn-success" id="button">Feeling funny? Here are some more jokes.</a>
-                    <a href="moreActivites.html" class="btn btn-warning" id="button">Wanna play a game?</a>
-
-                    <a href="#" class="btn btn-secondary" id="button">Team Building Activities/Trivia</a>
-
-                    <!-- <a href="#" class="btn btn-primary" id="button">Conversation Starters</a> -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Excuse Topic</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="family">Family</option>
+                    <option value="office">Office</option>
+                    <option value="children">Children</option>
+                    <option value="funny">Funny</option>
+                    <option value="unbelievable">Unbelievable</option>
+                    <option value="developers">Developers</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="submitExcusesButton" type="button">Generate Excuse</button>
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form action="mailto:jabels9@hotmail.com" method="post">
-                        <div class="form-group">
-                            <label for="suggestion">Activity suggestion? Submit here:</label>
-                            <input type="text" class="form-control" id="suggestion" name="suggestion" required>
-                        </div>
+        <div class="container" id="addExcuses">
 
-                        <button type="submit" id="submitbutton" class="btn btn-primary">Submit Suggestion</button>
-                    </form>
-                </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-body" id="navcard">
+            <a href="ideatorHome.html" class="btn btn-outline-primary" id="button">Home</a>
+            <a href="#" class="btn btn-success" id="button">Feeling funny? Here are some more jokes.</a>
+            <a href="moreActivites.html" class="btn btn-warning" id="button">Wanna play a game?</a>
+            <a href="#" class="btn btn-secondary" id="button">Team Building Activities/Trivia</a>
+        </div>
+    </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="mailto:jabels9@hotmail.com" method="post">
+                    <div class="form-group">
+                        <label for="suggestion">Have a good excuses? Share here:</label>
+                        <input type="text" class="form-control" id="suggestion" name="suggestion" required>
+                    </div>
+                    <button type="submit" id="submitbutton" class="btn btn-primary">Submit Suggestion</button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

@@ -59,10 +59,14 @@ function getChoices(questionDetails) {
   while(possibleAnswers.length) {
     const answerLabel = document.createElement("label");
     const radioBtn = document.createElement("input");
-    answerLabel.innerText = possibleAnswers[Math.floor(Math.random * possibleAnswers.length)];
+    const answerIndex = Math.floor(Math.random * possibleAnswers.length)
+    answerLabel.innerText = decode(possibleAnswers[answerIndex]);
+    radioBtn.type = 'radio';
     radioBtn.name = questionName;
     // continue assigning properties of radio then append the button to the answer label
-
+    radioBtn.value = possibleAnswers[answerIndex];
+    answerLabel.prepend(radioBtn);
+    possibleAnswers.splice(answerIndex,1);
   }
 }
 

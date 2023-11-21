@@ -56,9 +56,11 @@ body {
   text-align: center;
 
 }
+
 .random input[type="radio"] {
   margin-right: .25rem;
 }
-#addExcuses{
+
+#addExcuses {
   background-color: white;
 }

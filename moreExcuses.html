@@ -19,7 +19,7 @@
                 <h1>Excuses</h1>
                 <p id="random-excuse"></p>
             </div>
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" id="colorbackground">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Excuse Topic</label>
                 </div>
@@ -51,13 +51,25 @@
     </div>
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <form action="mailto:jabels9@hotmail.com" method="post">
                     <div class="form-group">
-                        <label for="suggestion">Have a good excuses? Share here:</label>
-                        <input type="text" class="form-control" id="suggestion" name="suggestion" required>
+                        <div class="col-md-4"><label for="suggestion">Have a good excuses? </label></div>
+                        <div class="col-md-4"> <input type="text" class="form-control" id="suggestion" name="suggestion"
+                                required placeholder="Share here"></div>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Email is optional">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
                     </div>
-                    <button type="submit" id="submitbutton" class="btn btn-primary">Submit Suggestion</button>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Click if you'd like a response</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

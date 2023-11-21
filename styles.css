@@ -95,14 +95,31 @@ body {
   font-weight: 700;
 }
 
-.correct-option {
-  border: 2px solid rgb(15, 169, 15);
-  border-radius: .25rem;
+.answer {
   font-weight: 700;
 }
 
-.incorrect-option {
+.correct-selection {
+  border: 2px solid rgb(15, 169, 15);
+  border-radius: .25rem;
+}
+
+.incorrect-selection {
   border: 2px solid red;
   border-radius: .25rem;
+}
+
+.error {
+  color: red;
+  font-style: italic;
   font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.scoreboard {
+  color: darkblue;
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }

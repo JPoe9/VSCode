@@ -23,7 +23,7 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: .75rem;
+  gap: .45rem;
 
 }
 

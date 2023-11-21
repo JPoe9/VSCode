@@ -20,19 +20,6 @@
   gap: 1rem;
 }
 
-/* #container {
->>>>>>> styles.css
-  border: 1px solid grey;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-  font-size: 1.4rem;
-  padding: 0 1rem;
-<<<<<<< styles.css
-=======
-} */
-
 .card-body {
   display: flex;
   flex-direction: column;
@@ -63,4 +50,33 @@ body {
 
 #addExcuses {
   background-color: white;
+}
+
+.page-title {
+  background-color: bisque;
+}
+
+.selection {
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
+  background-color: rgb(241, 202, 155);
+}
+
+.col {
+  display: inline-table
+}
+
+.trivia-question {
+  background-color: rgb(241, 202, 155);
+  padding: 1rem;
+}
+
+.trivia-question>label {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.trivia-question>p {
+  margin: 0;
 }

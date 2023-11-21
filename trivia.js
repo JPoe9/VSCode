@@ -1,13 +1,3 @@
-// available options on page:
-// category
-// difficulty
-
-// fetch 5 trivia questions from selected category/difficulty
-// display questions and answer choices
-// for each question, display the question and choices
-// compare user answer with correct answer
-// display results
-
 function decode(encoded) {
   const textArea = document.createElement("textarea");
   textArea.innerHTML = encoded;
@@ -39,11 +29,6 @@ async function populateCategoryOptions() {
     categoryPicklist.append(newOption);
   });
 }
-// getTriviaCategories();
-
-// ids
-// category
-// difficulty
 
 async function getTriviaQuestions(category = 9, difficulty = "easy") {
   let triviaQuestions;
@@ -81,21 +66,28 @@ function getChoices(questionDetails) {
   }
   return answers;
 }
+
 function checkAnswers(triviaQuestions) {
   const triviaAnswers = document.querySelectorAll("input:checked");
   const questionDivs = document.querySelectorAll("#trivia-questions > div");
   for (let i = 0; i < triviaQuestions.length; i++) {
     const result = document.createElement("p");
     const selectedAnswer = triviaAnswers[i].value;
+    const options = document.querySelectorAll(`input[name="${triviaAnswers[i].name}"]`)
     const correctAnswer = triviaQuestions[i].correct_answer;
     if (selectedAnswer === correctAnswer) {
+      for(let option of options) if(option.value === correctAnswer) option.parentElement.classList.add("correct-option");
       result.innerText = "Correct!!";
+      result.className = "correct"
     } else {
+      for(let option of options) if(option.value === correctAnswer) option.parentElement.classList.add("incorrect-option");
       result.innerText = `Sorry the correct answer is ${correctAnswer}`;
+      result.className = "incorrect"
     }
     questionDivs[i].append(result);
   }
 }
+
 async function displayTrivia() {
   const triviaSection = document.getElementById("trivia-questions");
   const category = document.getElementById("category").value;
@@ -123,6 +115,7 @@ async function displayTrivia() {
   questionElements.forEach((question) => triviaSection.append(question));
   triviaSection.append(checkAnswersButton);
 }
+
 populateCategoryOptions();
 document
   .getElementById("triviaSelection")

@@ -75,8 +75,31 @@ body {
   display: flex;
   gap: .5rem;
   align-items: center;
+  padding: 0 .5rem;
 }
 
 .trivia-question>p {
   margin: 0;
+}
+
+.correct {
+  color: rgb(15, 169, 15);
+  font-weight: 700;
+}
+
+.incorrect {
+  color: red;
+  font-weight: 700;
+}
+
+.correct-option {
+  border: 2px solid rgb(15, 169, 15);
+  border-radius: .25rem;
+  font-weight: 700;
+}
+
+.incorrect-option {
+  border: 2px solid red;
+  border-radius: .25rem;
+  font-weight: 700;
 }

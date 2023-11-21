@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="moreExcuses.js"></script>
+    <title>loads of excuses here</title>
+</head>
+
+<body id="bodyActivity">
+    <div>
+        <div class="container">
+            <div class="jumbotron text-center">
+
+                <h1>Excuses</h1>
+                <p id="random-excuse"></p>
+            </div>
+            <div class="input-group mb-3" id="colorbackground">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Excuse Topic</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="family">Family</option>
+                    <option value="office">Office</option>
+                    <option value="children">Children</option>
+                    <option value="funny">Funny</option>
+                    <option value="unbelievable">Unbelievable</option>
+                    <option value="developers">Developers</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="submitExcusesButton" type="button">Generate Excuse</button>
+                </div>
+            </div>
+        </div>
+        <div class="container hidden border" id="addExcuses">
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-body" id="navcard">
+            <a href="ideatorHome.html" class="btn btn-outline-primary" id="button">Home</a>
+            <a href="#" class="btn btn-success" id="button">Feeling funny? Here are some more jokes.</a>
+            <a href="moreActivites.html" class="btn btn-warning" id="button">Wanna play a game?</a>
+            <a href="#" class="btn btn-secondary" id="button">Team Building Activities/Trivia</a>
+        </div>
+    </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="mailto:jabels9@hotmail.com" method="post">
+                    <div class="form-group">
+                        <div class="col-md-4"><label for="suggestion">Have a good excuses? </label></div>
+                        <div class="col-md-4"> <input type="text" class="form-control" id="suggestion" name="suggestion"
+                                required placeholder="Share here"></div>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Email is optional">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Click if you'd like a response</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

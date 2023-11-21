@@ -4,12 +4,10 @@ jSelectionBtn.addEventListener("click", getSelectJoke);
 function getSelectJoke(){
     const jContainer = document.querySelector("#jokeReturnedContainer");
     const jPTag = document.querySelector("#jokeReturned");
-//     jContainer.outerHTML =`<div class="container card" id="jokeReturnedContainer" style="text-align: center;">
-//     <div class="row ">
-//          <h2> Here's the joke you requested... enjoy! </h2>
-// <p class="card-body" id="jokeReturned"></p>
-//     </div>
-// </div>`;
+    const jDeliveryPTag = document.querySelector("#jokeDelivery");
+    const jDeliveryBtn = document.querySelector("#jDeliveryBtn");
+    jDeliveryPTag.classList.add("hidden");
+    jDeliveryBtn.classList.add("hidden");
     let jCategory = document.querySelector("#jokeCategory").value;
     console.log(jCategory);
     let jType = document.querySelector("#jokeType").value
@@ -30,19 +28,12 @@ function getSelectJoke(){
         if(jType === "Single"){
             jPTag.innerText = responseObject.joke;
         }else{
-            const jDelivery = document.createElement("p");
-            jDelivery.classList.add("hidden");
-            const jDeliveryBtn = document.createElement("input");
-            jDeliveryBtn.type ="button";
-            jDeliveryBtn.value = "Show Delivery";
-            jDeliveryBtn.classList.add("btn","btn-primary");
             jPTag.innerText = responseObject.setup;
-            jDelivery.innerText = responseObject.delivery;
-            jContainer.appendChild(jDelivery);
-            jContainer.appendChild(jDeliveryBtn);
+            jDeliveryPTag.innerText = responseObject.delivery;
+            jDeliveryBtn.classList.remove("hidden");
             jDeliveryBtn.addEventListener("click", function (){
-                jDelivery.classList.remove("hidden");
-                jContainer.removeChild(jDeliveryBtn);
+                jDeliveryPTag.classList.remove("hidden");
+                jDeliveryBtn.classList.add("hidden");
             })
         }
     })

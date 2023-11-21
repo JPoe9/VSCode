@@ -81,7 +81,25 @@ function getChoices(questionDetails) {
   }
   return answers;
 }
-
+function checkAnswers(triviaQuestions) {
+  //we need to loop through elements on page that are children of trivia questions is 6 long
+  //and then at the same time loop through trivia questions (for i loop)
+  //then we'll compare value of each checked answer to the correct answer
+  //add to div "correct" or "incorrect" (styling green on correct answer, red for incorrect)
+  const triviaAnswers = document.querySelectorAll("input:checked");
+  const questionDivs = document.querySelectorAll("#trivia-questions > div");
+  for (let i = 0; i < triviaQuestions.length; i++) {
+    const result = document.createElement("p");
+    const selectedAnswer = triviaAnswers[i].value;
+    const correctAnswer = triviaQuestions[i].correct_answer;
+    if (selectedAnswer === correctAnswer) {
+      result.innerText = "Correct!!";
+    } else {
+      result.innerText = `Sorry the correct answer is ${correctAnswer}`;
+    }
+    questionDivs[i].append(result);
+  }
+}
 async function displayTrivia() {
   const triviaSection = document.getElementById("trivia-questions");
   const category = document.getElementById("category").value;
@@ -103,9 +121,14 @@ async function displayTrivia() {
   checkAnswersButton.id = "check-answers";
   checkAnswersButton.classList.add("btn", "btn-primary");
   checkAnswersButton.value = "Check Answers";
+  checkAnswersButton.addEventListener("click", () =>
+    checkAnswers(triviaQuestions)
+  );
   questionElements.forEach((question) => triviaSection.append(question));
   triviaSection.append(checkAnswersButton);
 }
 populateCategoryOptions();
-document.getElementById("triviaSelection").addEventListener('click', displayTrivia);
+document
+  .getElementById("triviaSelection")
+  .addEventListener("click", displayTrivia);
 // getTriviaQuestions(28, "medium");

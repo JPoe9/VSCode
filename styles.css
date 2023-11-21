@@ -23,7 +23,7 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: .75rem;
+  gap: .5rem;
 
 }
 
@@ -66,8 +66,11 @@ body {
   display: inline-table
 }
 
-.trivia-question {
+.trivia {
   background-color: rgb(241, 202, 155);
+}
+
+.trivia-question {
   padding: 1rem;
 }
 

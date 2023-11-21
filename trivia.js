@@ -99,7 +99,7 @@ async function displayTrivia() {
     const question = document.createElement("p");
     const choices = getChoices(questionDetails);
     question.innerText = decode(questionDetails.question);
-    questionDiv.classList.add("trivia-question");
+    questionDiv.classList.add("trivia-question", "trivia");
     questionDiv.append(question);
     choices.forEach((choice) => questionDiv.append(choice));
     return questionDiv;

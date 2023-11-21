@@ -9,10 +9,8 @@ function getSelectJoke(){
     jDeliveryPTag.classList.add("hidden");
     jDeliveryBtn.classList.add("hidden");
     let jCategory = document.querySelector("#jokeCategory").value;
-    console.log(jCategory);
     let jType = document.querySelector("#jokeType").value
-    console.log(jType);
-    
+    let jUrl;
     if(jCategory === "Any Category"){
         jCategory = "Any";
     }
@@ -25,9 +23,9 @@ function getSelectJoke(){
     .then((response)=>response.json())
     .then(responseObject => {
         jContainer.classList.remove("hidden");
-        if(jType === "Single"){
+        if(jType === "Single" && responseObject.joke){
             jPTag.innerText = responseObject.joke;
-        }else{
+        }else if(responseObject.setup && responseObject.delivery){
             jPTag.innerText = responseObject.setup;
             jDeliveryPTag.innerText = responseObject.delivery;
             jDeliveryBtn.classList.remove("hidden");

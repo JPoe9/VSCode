@@ -45,7 +45,8 @@
           id="triviaSelection"
         />
         <p></p>
-        <button onclick="refreshPage()">Click here to select a new set of questions</button>
+        <button id="reset-btn" onclick="refreshPage()" class="hidden">Click here to select a new set of questions</button>
+        <div id="message"></div>
       </div>
       <script>
         function refreshPage() {

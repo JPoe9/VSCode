@@ -70,3 +70,15 @@ body {
 .col{
   display: inline-table
 }
+.trivia-question{
+  background-color: rgb(241, 202, 155);
+  padding: 1rem;
+  }
+.trivia-question > label{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+.trivia-question > p{
+  margin: 0;
+}  

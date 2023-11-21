@@ -86,6 +86,7 @@ function checkAnswers(triviaQuestions) {
   //and then at the same time loop through trivia questions (for i loop)
   //then we'll compare value of each checked answer to the correct answer
   //add to div "correct" or "incorrect" (styling green on correct answer, red for incorrect)
+  //need to add a refresh page
   const triviaAnswers = document.querySelectorAll("input:checked");
   const questionDivs = document.querySelectorAll("#trivia-questions > div");
   for (let i = 0; i < triviaQuestions.length; i++) {
@@ -111,7 +112,7 @@ async function displayTrivia() {
     const question = document.createElement("p");
     const choices = getChoices(questionDetails);
     question.innerText = decode(questionDetails.question);
-    console.log(question);
+    questionDiv.classList.add('trivia-question');
     questionDiv.append(question);
     choices.forEach((choice) => questionDiv.append(choice));
     return questionDiv;

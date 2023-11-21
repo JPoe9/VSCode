@@ -27,21 +27,16 @@ submitExcusesButton.addEventListener("click", function () {
     })
     .then(function (data) {
       selectedExcuses = data[0].excuse;
-      console.log(selectedExcuses);
       let selectedExcuseElement = document.getElementById("addExcuses");
       selectedExcuseElement.classList.remove("hidden");
       // selectedExcuseElement.innerText = selectedExcuses;
       // selectedExcuseElement.classList.add("addFirstExcuses");
       let para = document.createElement("p");
       para.style.cssText = 'margin:2px;';
-
-      console.log(selectedExcuseElement.children.length);
       if(selectedExcuseElement.children.length > 0){
         para.classList.add("border-top");
 
       }
-
-
       const node = document.createTextNode(selectedExcuses);
       para.appendChild(node);
       let element = document.getElementById("addExcuses");

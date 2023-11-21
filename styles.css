@@ -59,3 +59,6 @@ body {
 .random input[type="radio"] {
   margin-right: .25rem;
 }
+#addExcuses{
+  background-color: white;
+}

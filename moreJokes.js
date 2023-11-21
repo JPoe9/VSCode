@@ -8,24 +8,32 @@ function getSelectJoke(){
     const jDeliveryBtn = document.querySelector("#jDeliveryBtn");
     jDeliveryPTag.classList.add("hidden");
     jDeliveryBtn.classList.add("hidden");
+    jPTag.innerText = "";
     let jCategory = document.querySelector("#jokeCategory").value;
     let jType = document.querySelector("#jokeType").value
+    
     let jUrl;
     if(jCategory === "Any Category"){
         jCategory = "Any";
     }
-    if(jType === "Any Type"){
-        jUrl = `https://v2.jokeapi.dev/joke/${jCategory}?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`;
-    }else{
-        jUrl = `https://v2.jokeapi.dev/joke/${jCategory}?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=${jType}`;
+    switch (jType){
+        case "Any Type":
+            jUrl = `https://v2.jokeapi.dev/joke/${jCategory}?blacklistFlags=nsfw,religious,political,racist,sexist,explicit`;
+            break;
+        case "Single":
+            jUrl = `https://v2.jokeapi.dev/joke/${jCategory}?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single`;
+            break;
+        case "Two-part":
+            jUrl = `https://v2.jokeapi.dev/joke/${jCategory}?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart`;
     }
     fetch(jUrl)
     .then((response)=>response.json())
     .then(responseObject => {
+        console.log(responseObject);
         jContainer.classList.remove("hidden");
-        if(jType === "Single" && responseObject.joke){
+        if(responseObject.type === "single" ){ //&& responseObject.joke
             jPTag.innerText = responseObject.joke;
-        }else if(responseObject.setup && responseObject.delivery){
+        }else{ // responseObject.setup && responseObject.delivery
             jPTag.innerText = responseObject.setup;
             jDeliveryPTag.innerText = responseObject.delivery;
             jDeliveryBtn.classList.remove("hidden");

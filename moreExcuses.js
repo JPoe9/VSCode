@@ -29,33 +29,15 @@ submitExcusesButton.addEventListener("click", function () {
     .then(function (data) {
       selectedExcuses = data[0].excuse;
       console.log(selectedExcuses);
-      if (addAPTagFlag === false) {
-        let selectedExcuseElement = document.getElementById("addExcuses");
-        // selectedExcuseElement.innerText = selectedExcuses;
-        // selectedExcuseElement.classList.add("addFirstExcuses");
+      let selectedExcuseElement = document.getElementById("addExcuses");
+      // selectedExcuseElement.innerText = selectedExcuses;
+      // selectedExcuseElement.classList.add("addFirstExcuses");
+      const para = document.createElement("p");
+      const node = document.createTextNode(selectedExcuses);
+      para.appendChild(node);
 
-        const para = document.createElement("p");
-        const node = document.createTextNode(selectedExcuses);
-        para.appendChild(node);
-
-        const element = document.getElementById("addExcuses");
-        element.appendChild(para);
-        addAPTagFlag = true;
-        return selectedExcuses;
-      } else {
-        let selectedExcuseElement = document.getElementById("addFirstExcuses");
-        selectedExcuseElement.innerText = selectedExcuses;
-        const newPTag = document.createElement("p");
-        newPTag.classList.add("addAnotherExcuses");
-        newPTag.innerText += selectedExcuses;
-
-        const para = document.createElement("p");
-        const node = document.createTextNode(selectedExcuses);
-        para.appendChild(node);
-
-        const element = document.getElementById("addExcuses");
-        element.appendChild(para);
-        return selectedExcuses;
-      }
+      const element = document.getElementById("addExcuses");
+      element.appendChild(para);
+      return selectedExcuses;
     });
 });

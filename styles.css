@@ -5,7 +5,6 @@
   box-shadow: 5px 5px 5px 5px rgb(245, 245, 147);
 }
 
-
 #button {
   padding: 1rem;
 }
@@ -50,7 +49,9 @@ body {
 
 #addExcuses {
   background-color: white;
+  border-radius: 10px; 
 }
+
 
 .page-title {
   background-color: bisque;
@@ -85,6 +86,12 @@ body {
   margin: 0;
 }
 
+
+#colorbackground  {
+  background-color:  rgb(241, 202, 155);
+  padding: 20px; 
+  border-radius: 10px; 
+}
 .correct {
   color: rgb(15, 169, 15);
   font-weight: 700;

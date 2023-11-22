@@ -35,7 +35,7 @@ function getSelectJoke(){
                     console.log(responseObject.error);
                     if(responseObject.error){
                         jPTag.classList.add("hidden");
-                        jDeliveryBtn.classList.remove("hidden");
+                        jContainer.classList.remove("hidden");
                          hElement.innerText = "The options you selected did not yield a joke. Please change the selection and try again!";
                     }else{
                         jPTag.classList.remove("hidden");

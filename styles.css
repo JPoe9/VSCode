@@ -141,3 +141,13 @@ body {
   z-index: -1;
   opacity: 50%;
 }
+
+#details {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+#details > span {
+  font-weight: 700;
+  margin-right: 2rem;
+}

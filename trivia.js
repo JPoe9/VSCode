@@ -11,7 +11,6 @@ async function getTriviaCategories() {
       `https://opentdb.com/api_category.php`
     );
     categories = await categoryResponse.json();
-    console.log(categories);
   } catch (error) {
     console.error(error);
   }
@@ -102,7 +101,7 @@ function checkAnswers(triviaQuestions) {
       scoreboard.innerText = "5/5 questions answered correctly! Great job!";
       break;
     case 4:
-      scoreboard.innerText = "4/5 questions answered correctly! So close!";
+      scoreboard.innerText = "4/5 questions answered correctly! Almost perfect!";
       break;
     case 3:
       scoreboard.innerText = "3/5 questions answered correctly. Gettting warmer!";
@@ -120,8 +119,7 @@ function checkAnswers(triviaQuestions) {
   disableOptions();
   messageSection.append(scoreboard);
   scoreboard.classList.add("scoreboard");
-  const resetBtn = document.getElementById("reset-btn");
-  resetBtn.classList.remove("hidden");
+
 
 }
 
@@ -136,22 +134,46 @@ function createQuestionElement(questionDetails) {
   return questionDiv;
 }
 
+async function getRandomCategory() {
+  const categories = await getTriviaCategories();
+  let randomIndex = Math.floor(Math.random() * categories.length);
+  return categories[randomIndex];
+}
+
+function getRandomDifficulty() {
+  const difficulties = ['easy', 'medium', 'hard'];
+  let randomIndex = Math.floor(Math.random() * difficulties.length);
+  return difficulties[randomIndex];
+}
+
+function toTitleCase(string) {
+  let titleString = string[0].toUpperCase() + string.slice(1);
+  return titleString;
+}
+
+
 async function displayTrivia() {
+  const resetBtn = document.getElementById("reset-btn");
+  resetBtn.classList.remove("hidden");
   const selectors = document.querySelectorAll('select');
-  console.log(selectors);
   selectors.forEach(selector => selector.disabled = true);
   const submitBtn = document.getElementById("triviaSelection");
   submitBtn.classList.add("hidden");
   const triviaSection = document.getElementById("trivia-questions");
   const messageSection = document.getElementById("message");
-  let category = document.getElementById("category").value;
+  const categoryList = document.getElementById("category");
+  let category = { id: categoryList.value, name: categoryList.options[categoryList.selectedIndex].text };
   let difficulty = document.getElementById("difficulty").value;
-  if(category === "Any Category") category = null;
-  if(difficulty === "Any Difficulty") difficulty = null;
-  const triviaObject = await getTriviaQuestions(category, difficulty);
+  if(category.id === "Any Category") category = await getRandomCategory();
+  if(difficulty === "Any Difficulty") difficulty = getRandomDifficulty();
+  const triviaObject = await getTriviaQuestions(category.id, difficulty);
   const triviaQuestions = triviaObject.results;
   const questionElements = triviaQuestions.map(createQuestionElement);
   const checkAnswersButton = document.createElement("input");
+  const selectedDetails = document.createElement("p");
+  selectedDetails.id = "details";
+  selectedDetails.innerHTML = `Category: <span>${category.name}</span> Difficulty: <span>${toTitleCase(difficulty)}</span>`;
+  messageSection.prepend(selectedDetails);
   checkAnswersButton.type = "button";
   checkAnswersButton.id = "check-answers";
   checkAnswersButton.classList.add("btn", "btn-primary");

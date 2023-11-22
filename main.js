@@ -109,10 +109,10 @@ function formatTrivia(triviaContent){
     const answerTag = document.getElementById("answer-tag");
     console.log(triviaContent);
     if(userAnswer === triviaContent.results[0].correct_answer){
-      answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the right answer! `
+      answerTag.innerText = `It is ${decode(triviaContent.results[0].correct_answer)}. You got the right answer! `
       randomTriviaCard.append(answerTag);
     }else{
-      answerTag.innerText = `It is ${triviaContent.results[0].correct_answer}. You got the wrong answer! `
+      answerTag.innerText = `It is ${decode(triviaContent.results[0].correct_answer)}. You got the wrong answer! `
       randomTriviaCard.append(answerTag);    
     }
     answerTag.classList.remove("hidden");
@@ -142,3 +142,4 @@ newPTag.innerText = "Thank you for the suggestion";
 newPTag.classList.add("tracker");
 document.body.append(newPTag);
 })
+

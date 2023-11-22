@@ -142,3 +142,4 @@ newPTag.innerText = "Thank you for the suggestion";
 newPTag.classList.add("tracker");
 document.body.append(newPTag);
 })
+
